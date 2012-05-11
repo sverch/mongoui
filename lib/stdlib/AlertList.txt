@@ -1,0 +1,28 @@
+Alert Types: Alerts range in priority from 0(low)-255(high) and have ID 0-599
+
+Cluster Alerts 0-99
+
+Shard Alerts 100-199
+
+Replica Set Alerts 200-299
+200: Primary Down Alert P230
+201: No Arbiter Alert P200
+202: Some Secondaries Stale Alert P150
+203: Some Secondaries Unreachable P160
+204: The replica set will fail if the primary fails P215
+205: The replica set will fail if the host the primary is on goes down P175
+
+Host Alerts 300-399
+300: Unreachable Host Alert P255
+
+Server Alerts 400-499
+400: Unreachable Server Alert P255
+401: Unreplciated Server Alert P200
+410: Stale Secondary Alert P150
+
+Collection Alerts 500-599
+
+Document Alerts 600-699
+
+
+

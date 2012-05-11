@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>MongoUI</title>
+
+		<!--stylesheets-->
+		<link type="text/css" href="css/le-frog/jquery-ui-1.8.20.custom.css" rel="stylesheet" />
+        <link type="text/css" href="css/widget-style.less" rel="stylesheet/less" />
+
+
+        
+        <head profile="http://www.w3.org/2005/10/profile">
+	<link rel="shortcut icon" href="./img/favicon.ico">
+
+        <link type="text/css" href="css/dashboard.less" rel="stylesheet/less" />
+
+		<!--javascript helper libraries-->
+		<script type="text/javascript" src="js/less-1.3.0.min.js"></script>
+		<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
+        <script type="text/javascript" src="js/jquery-ui-1.8.19.custom.min.js"></script>
+        <script type="text/javascript" src="js/prettyPrint.js"></script>
+        <script type="text/javascript" src="js/jquery.ba-resize.min.js"></script>
+        <script type="text/javascript" src="js/thejit.js"></script>
+
+		<!--includes to deal with server socket-->
+		<script src="/socket.io/socket.io.js"></script>
+		<script src="./client-js/db-data.js"></script>
+
+        <!--libraries-->
+        <script src="./lib/stdlib/maxHeap.js" type="text/javascript"></script>
+        <script src="./lib/stdlib/mongoArchitecture/topologicalMap.js" type="text/javascript"></script>
+        <script src="./lib/stdlib/mongoArchitecture/collection.js" type="text/javascript"></script>
+        <script src="./lib/stdlib/mongoArchitecture/database.js" type="text/javascript"></script>
+        <script src="./lib/stdlib/mongoArchitecture/server.js" type="text/javascript"></script>
+        <script src="./lib/stdlib/mongoArchitecture/host.js" type="text/javascript"></script>
+        <script src="./lib/stdlib/mongoArchitecture/replicaSet.js" type="text/javascript"></script>
+        <script src="./lib/stdlib/mongoArchitecture/chunk.js" type="text/javascript"></script>
+        <script src="./lib/stdlib/mongoArchitecture/shard.js" type="text/javascript"></script>
+        <script src="./lib/stdlib/mongoArchitecture/cluster.js" type="text/javascript"></script>
+        <script src="./lib/stdlib/alerts.js" type="text/javascript"></script>
+
+        <!--layout-->
+        <script type="text/javascript" src="layout/tabbed-layout.js"></script>
+
+        <!--widgets-->
+        <script type="text/javascript" src="widgets/util/font.js"></script>
+        <script type="text/javascript" src="widgets/ping-widget/ping-widget.js"></script>
+<!--        <script type="text/javascript" src="widgets/pie-widget/pie-widget.js"></script>-->
+        <script type="text/javascript" src="widgets/chunks-widget/chunks-widget.js"></script>
+        <script type="text/javascript" src="widgets/cluster-widget/cluster-widget.js"></script>
+        <script type="text/javascript" src="widgets/shard-view/shard-view.js"></script>
+
+		<script type="text/javascript">
+            /* MongoUI Initialization Sequence */
+            $(function()
+                {
+
+                /* Create DataSocket */
+                var dbdata = new DataSocket();
+
+                /* Set up Dashboard */
+                var layout = new Layout('layout-container',dbdata);
+
+                /* Initialize all UI elements */
+                layout.add("Cluster", ClusterTreeWidget);
+                layout.add("Chunks", ChunkWidget);
+                layout.add("Shards", ShardView);
+                layout.add("Ping", PingWidget);
+
+                /* Refresh Button */
+                $('#refresh').click(function() {
+                    dbdata.requestUpdate();
+                });
+                $('#getcluster').submit(function() {
+                    var host = $('input:text[name=host]').val()
+                    var port = $('input:text[name=port]').val()
+                    var server = host + ":" + port;
+                    $('#footer-container').empty();
+                    $('#footer-container').append("Viewing: " + server);
+                    dbdata.servers = [server];
+                    dbdata.requestUpdate();
+                    return true;
+                });
+
+                function resizeLayout () {
+                    $('#layout-container').height($(window).height() -
+                        $('#header-container').height() -
+                        $('#footer-container').height()
+                    );
+                }
+
+                resizeLayout();
+                $(window).resize(resizeLayout);
+            });
+		</script>
+	</head>
+    <body>
+        <div id="main-container">
+            <div id="header-container">
+                <div id="title-container">
+                    <h1 id="logo"><a href="#">mongoUI</a></h1>
+                </div>
+                <div id="options-container">
+                    <form action="javascript:void(0);" id="getcluster">
+
+           <!--             Host: <input type="text" name="host" value="cslab9c"></input>
+                        Port: <input type="text" name="port" value="27017"></input>
+                        <input type="submit" value="Get Cluster"></input>-->
+
+			<div class="options-field-container">
+                            <a class="option-name">Host:</a><a class="option-value"><input type="text" name="host" value="localhost"></input></a><br>
+                            <a class="option-name">Port:</a><a class="option-value"><input type="text" name="port" value="27017"></input></a>
+                        </div>
+                        <div class="options-submit-container">
+                            <input type="submit" value="Get Cluster!"></input>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+            <div id="layout-container">
+                <ul>
+                </ul>
+            </div>
+            <div id="footer-container">
+                MyMongo
+            </div>
+        </div>
+    </body>
+</html>

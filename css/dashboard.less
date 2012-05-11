@@ -1,0 +1,123 @@
+.black-border {
+    border-width: 0 5px 0 5px;
+    border-style: solid;
+    border-color: black;
+}
+#main-container {
+    height: 100%;
+    width: 98%;
+    min-width: 1024px;
+    position: absolute;
+    top: 0;
+    left: 1%;
+    overflow: hidden;
+    > div {
+        overflow: hidden;
+    }
+}
+
+#header-container {
+    height:97px;
+    display:table-cell;
+    vertical-align: middle;
+    width: 1024px;
+}
+
+#title-container {
+    display: block;
+    float: left;
+    height:97px;
+    width:325px;
+    background-image:url('../img/logo.png');
+    text-indent: -9999px;
+}
+#options-submit-container {
+    position: relative;
+    float: left;
+}
+#options-fields-container {
+    position: relative;
+    float: left;
+
+}
+#options-container {
+    margin-top: 20px;
+    float: left;
+    padding-left: 100px;
+}
+#layout-container {
+    > div {
+        overflow: auto;
+    }
+}
+
+#footer-container {
+    padding-left: 5px;
+    height: 30px;
+    font-size: 1.1em;
+    color: #520;
+}
+.options-field-container {
+    position: relative;
+    float: left;
+}
+.options-submit-container input {
+    position: absolute;
+    margin-left: 25px;
+    width: 200px;
+    height: 50px;
+    font-size: 2em;
+    color: #520;
+}
+.option-name {
+    display: block;
+    float: left;
+    width: 100px;
+    font-size: 2em;
+    color: #520;
+}
+.option-value input {
+    display: block;
+    float: left;
+    width: 200px;
+    font-size: 1em;
+    color: #331a00;
+}
+form    {
+background: -webkit-gradient(linear, bottom, left 175px, from(#CCCCCC), to(#EEEEEE));
+background: -moz-linear-gradient(bottom, #CCCCCC, #EEEEEE 175px);
+margin:auto;
+position:relative;
+width:530px;
+height:50px;
+font-family: Tahoma, Geneva, sans-serif;
+font-size: 14px;
+font-style: italic;
+line-height: 24px;
+font-weight: bold;
+color: #331A00;
+text-decoration: none;
+-webkit-border-radius: 10px;
+-moz-border-radius: 10px;
+border-radius: 10px;
+padding:10px;
+border: 1px solid #999;
+border: inset 1px solid #333;
+-webkit-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+-moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+}
+
+/** shard-view **/
+
+ul .shard-view-alert{
+    list-style-image: url('/widgets/shard-view/alert.png');
+}
+
+a.shard-view-click{
+    text-decoration: none;
+}
+
+.shard-view-reveal {
+    display:none;
+}
