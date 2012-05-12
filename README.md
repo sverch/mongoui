@@ -1,11 +1,13 @@
-Introduction:
+MongoUI
+=======
 
 MongoUI is a web app designed to provide a graphical way to view a MongoDB
 cluster
 
 Node.js must be installed to run MongoUI
 
-Usage:
+Usage
+-----
 
 From the root directory of MongoUI, run:
 
