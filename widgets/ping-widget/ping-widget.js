@@ -42,7 +42,21 @@ function PingWidget (baseID) {
      * as an argument the raw data from MongoDB */
     this.render = function (data) {
         $(sel.ping).empty();
-        var table = prettyPrint(data);
-        $(sel.ping).append(table);
+        var formatted_data = jstreeFormat(data);
+        $(sel.ping).jstree({
+            "core": {
+                "animation": 100
+            },
+            "json_data": {
+                "data": formatted_data,
+                "progressive_render": true
+            },
+            "themes": {
+                "theme": "default",
+                "icons": false,
+                "dots": false
+            },
+            "plugins": [ "themes", "json_data", "ui"]
+        });
     };
 }
