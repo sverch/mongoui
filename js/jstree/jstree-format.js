@@ -21,7 +21,7 @@ function jstreeFormat (json) {
             json_obj[i] = json[i];
         }
         if (json.length === 0) {
-            return undefined;
+            return ["[ ]"];
         }
     } else {
         json_obj = json;
@@ -38,7 +38,7 @@ function jstreeFormat (json) {
     }
 
     if ($.isEmptyObject(json_display)) {
-        return ["{}"];
+        return ["{ }"];
     }
 
     return json_display;
