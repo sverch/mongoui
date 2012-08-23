@@ -154,9 +154,11 @@ function undiscoverdServers (serverData) {
                 pushAll(serverNames,routingServers,serverData);
             }
         } else if (process === "mongos") {
-            for (var i=0;i<shards.length;i++) {
-                var shardServers = parseShardStr(shards[i].host).servers;
-                pushAll(serverNames,shardServers,serverData);
+            if (typeof shards !== 'undefined') {
+                for (var i=0;i<shards.length;i++) {
+                    var shardServers = parseShardStr(shards[i].host).servers;
+                    pushAll(serverNames,shardServers,serverData);
+                }
             }
         } else {
             console.log("Invalid serverStatus output");
