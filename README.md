@@ -6,12 +6,20 @@ cluster
 
 Node.js must be installed to run MongoUI
 
+Setup
+-----
+Run
+
+    npm install
+
+from the root of the repository to install all the necessary dependencies.
+
 Usage
 -----
 
 From the root directory of MongoUI, run:
 
-node server.js [port]
+    node server.js [port]
 
 This will run a node.js server listening on the given port (default 8080).  Open
 "localhost:8080" in a browser to bring up the dashboard.

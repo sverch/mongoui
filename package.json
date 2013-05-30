@@ -1,0 +1,29 @@
+{
+  "name": "mongoui",
+  "version": "0.0.0",
+  "description": "A cluster visualizer for MongoDB",
+  "main": "server.js",
+  "dependencies": {
+    "async": "~0.1.18",
+    "express": "~2.5.8",
+    "mongodb": "~0.9.9-7",
+    "mime": "~1.2.5",
+    "socket.io": "~0.9.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Zarkantho/mongoui.git"
+  },
+  "keywords": [
+    "MongoDB",
+    "MongoUI",
+    "visualizer"
+  ],
+  "author": "Shaun Verch <shaun.verch@10gen.com>",
+  "license": "BSD"
+}
